@@ -10,6 +10,18 @@ const apiKey = process.env.API_KEY;
 // GET all job posts for homepage
 router.get("/", async (req, res) => {
     try {
+      res.render("homepage");
+
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+
+// GET all job posts for homepage
+router.get("/jobs", async (req, res) => {
+    try {
       const response = await fetch("https://findwork.dev/api/jobs/", {
         headers: {
           Authorization: `Token ${apiKey}`,
@@ -19,7 +31,7 @@ router.get("/", async (req, res) => {
 
       //console.log(data);
 
-      res.render("homepage", {
+      res.render("alljobs", {
         data,
         loggedIn: req.session.loggedIn,
       });
