@@ -1,0 +1,24 @@
+{{!-- view to display all job listings on homepage --}}
+
+<h4>All job listings</h4>
+
+{{#each data.results as |job|}}
+    <div class='card'>
+        <div class="card-content">
+            <span class="card-title">
+        {{job.role}}</span>
+        <p>
+        Company: {{job.company_name}}
+        </p>
+
+      </br>
+      
+      <p>
+        Posted on: {{format_date job.date_posted}}
+      </p>
+        </div>
+        <div class="card-action">
+          <a href="job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
+        </div>
+    </div>
+  {{/each}}
