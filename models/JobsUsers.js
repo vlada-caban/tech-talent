@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Notes extends Model {}
+class JobsUsers extends Model {}
 
-Notes.init(
+JobsUsers.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,18 +11,15 @@ Notes.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    note_title: {
+    status: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    note_body: {
-      type: DataTypes.TEXT,
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
         key: "id",
+        unique: false,
       },
     },
     job_id: {
@@ -30,6 +27,7 @@ Notes.init(
       references: {
         model: "jobs",
         key: "id",
+        unique: false,
       },
     },
   },
@@ -37,8 +35,8 @@ Notes.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "notes",
+    modelName: "jobsusers",
   }
 );
 
-module.exports = Notes;
+module.exports = JobsUsers;
