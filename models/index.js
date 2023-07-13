@@ -24,7 +24,15 @@ Jobs.belongsToMany(User, {
     model: JobsUsers,
     unique: false
   },
-  as: "job_user",
+  as: "job_belongs_to_user",
 });
 
-module.exports = { User, Notes};
+User.belongsToMany(Jobs, {
+  through: {
+    model: JobsUsers,
+    unique: false,
+  },
+  as: "user_saved_job",
+});
+
+module.exports = { User, Notes, Jobs, JobsUsers};

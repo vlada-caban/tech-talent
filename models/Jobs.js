@@ -15,6 +15,10 @@ Jobs.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    company_name: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
     saved_job_id: {
       type: DataTypes.TEXT,
       allowNull: false,
