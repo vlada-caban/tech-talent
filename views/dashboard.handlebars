@@ -1,1 +1,31 @@
 {{!-- User dashboard is here --}}
+
+<h3>Welcome to your dashboard where you can see all saved jobs</h3>
+
+{{#each jobs as |job|}}
+    <div class='card'>
+        <div class="card-content">
+            <span class="card-title">{{job.jobs.job_title}}</span>
+        <p>Company name: 
+        {{job.jobs.company_name}}
+       </p>
+
+<p>Saved id: 
+        {{job.jobs.saved_job_id}}
+       </p>
+      </br>
+      <p>
+        Status: {{job.status}}
+      </p>
+      <p>
+        Save on: {{format_date jobs.createdAt}}
+      </p>
+      <a href="#">Click Here to Apply</a>
+        </div>
+        <div class="card-action">
+          <a href="#" class="purple-text text-darken-4">Job details and notes</a>
+          <a href="#" class="purple-text text-darken-4">Update status</a>
+          <button id="delete-post-btn" data-id="{{job.jobs.id}}" class="btn red accent-4" type="submit">Remove job from saved</button>
+        </div>
+    </div>
+{{/each}}
