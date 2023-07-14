@@ -2,8 +2,9 @@
 
 <div class="card">
   <div class="card-content">
-    <span class="card-title"> {{data.role}}</span>
-    <p> Company: {{data.company_name}}</p>
+    <span class="card-title" id="job_title">{{data.role}}</span>
+    <p>Company: </p>
+    <p id="company_name">{{data.company_name}}</p>
     <p> Posted on: {{format_date data.date_posted}}</p>
     <p>Job details:</p>
     <div>
