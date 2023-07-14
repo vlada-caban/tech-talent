@@ -15,9 +15,9 @@
 {{! form to add a note and status}}
 
 <form class="col s12">
-  {{!-- <div class="row">
+  <div class="row">
     <div class="input-field col s12">
-      <select>
+      <select id="status">
         <option value="" disabled selected>Status</option>
         <option value="Applied">Applied</option>
         <option value="Rejected">Rejected</option>
@@ -26,7 +26,7 @@
       </select>
       <label>Choose status</label>
     </div>
-  </div> --}}
+  </div>
   <div class="row">
     <div class="input-field col s12">
       <textarea id="note_title" class="materialize-textarea"></textarea>
@@ -42,4 +42,4 @@
   <button class="btn purple darken-1" id="save-job-btn" type="submit">Save Job</button>
 </form>
 
-<script src="./js/savejob.js"></script>
+<script src="../js/savejob.js"></script>
