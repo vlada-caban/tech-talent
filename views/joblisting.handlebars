@@ -1,13 +1,46 @@
 <h4>Job details</h4>
 
 <div class="card">
-    <div class="card-content">
-        <span class="card-title"> {{data.role}}</span>
-        <p> Company: {{data.company_name}}</p>
-        <p> Posted on: {{format_date data.date_posted}}</p>
-        <p>Job details:</p>
-        <div>
-        {{{data.text}}}
-        </div>
+  <div class="card-content">
+    <span class="card-title" id="job_title">{{data.role}}</span>
+    <p>Company: </p>
+    <p id="company_name">{{data.company_name}}</p>
+    <p> Posted on: {{format_date data.date_posted}}</p>
+    <p>Job details:</p>
+    <div>
+      {{{data.text}}}
     </div>
+  </div>
 </div>
+
+{{! form to add a note and status}}
+
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12">
+      <select id="status">
+        <option value="" disabled selected>Status</option>
+        <option value="Applied">Applied</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Need to apply">Need to apply</option>
+        <option value="Offer received">Offer received</option>
+      </select>
+      <label>Choose status</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="note_title" class="materialize-textarea"></textarea>
+      <label for="note_title">Enter note title</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="note_body" class="materialize-textarea"></textarea>
+      <label for="note_body">Enter note body</label>
+    </div>
+  </div>
+  <button class="btn purple darken-1" id="save-job-btn" type="submit">Save Job</button>
+</form>
+
+<script src="../js/savejob.js"></script>
