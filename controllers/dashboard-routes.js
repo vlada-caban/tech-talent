@@ -32,4 +32,47 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+//DELETE saved job
+router.delete("/job/:id", withAuth, async (req, res) => {
+    try {
+        const userID = req.session.user_id;
+        const jobID = req.params.id;
+        //removing from JobsUsers
+        const jobsUsersData = await JobsUsers.destroy({
+            where: {
+                job_id: jobID,
+                user_id: userID
+            }
+        });
+
+        //removing all related notes
+        const notesData = await Notes.destroy({
+            where: {
+                job_id: jobID, 
+                user_id: userID
+            }
+        });
+
+        //checking if only this user saved this job and if so, removing it
+        const jobsData = await JobsUsers.findAll({
+          where: {
+            job_id: jobID,
+          },
+        });
+
+        if (!jobsData) {
+            const jobToRemove = await JobsUsers.destroy({
+              where: {
+                job_id: jobID
+              },
+            });
+        }
+
+        res.status(200).json(jobsUsersData);
+        
+    } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;

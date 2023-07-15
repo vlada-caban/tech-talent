@@ -20,12 +20,15 @@
       <p>
         Saved on: {{format_date job.createdAt}}
       </p>
-      <a href="#">Click Here to Apply</a>
+      {{!-- TODO: need to add a check if will navigate to 404 page and intercept --}}
+      <a href="https://findwork.dev/{{job.job.saved_job_id}}" target="blank">Click Here to Apply</a>
         </div>
         <div class="card-action">
           <a href="#" class="purple-text text-darken-4">Job details and notes</a>
           <a href="#" class="purple-text text-darken-4">Update status</a>
-          <button id="delete-post-btn" data-id="{{job.jobs.id}}" class="btn red accent-4" type="submit">Remove job from saved</button>
+          <button id="delete-job-btn" data-id="{{job.job.id}}" class="btn red accent-4" type="submit">Remove job from saved</button>
         </div>
     </div>
 {{/each}}
+
+<script src="../js/deletejob.js"></script>
