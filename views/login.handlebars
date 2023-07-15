@@ -7,47 +7,49 @@
         <div class="collapsible-header"><i class="material-icons">account_circle</i>Login</div>
         <div class="collapsible-body login-form">
           <div class="row">
-            <div class="row input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <label for="email-login">Email:</label>
-              <input class="form-input" type="text" id="email-login" />
+            <form class = "login-form">
+              <div class="row input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <label for="email-login">Email:</label>
+                <input class="form-input" type="text" id="email-login" />
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">mode_edit</i>
+                <label for="password-login">Password:</label>
+                <input class="form-input" type="password" id="password-login" />
+              </div>
+              </div>
+              <div class="input-field col s6">
+              <button class="btn purple darken-1 waves-effect waves-light red" type="submit">login</button>
             </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">mode_edit</i>
-              <label for="password-login">Password:</label>
-              <input class="form-input" type="password" id="password-login" />
-            </div>
-          </div>
-          <div class="input-field col s6">
-            <button class="btn purple darken-1 waves-effect waves-light red" type="submit">login</button>
-          </div>
+          </form>
         </div>
       </li>
       <li>
         <div class="collapsible-header"><i class="material-icons">mode_edit</i>Sign Up</div>
-        <div class="collapsible-body signup-form">
+        <div class="collapsible-body">
           <div class="row">
-            <div class="row input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <label for="username-signup">Username</label>
-              <input class="form-input" type="text" id="username-signup" />
-            </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">mode_edit</i>
-              <label for="email-signup">Email</label>
-              <input class="form-input" type="text" id="email-signup" />
-            </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">mode_edit</i>
-              <label for="password-signup">Password</label>
-              <input class="form-input" type="password" id="password-signup" />
-            </div>
-          </div>
-            <div class="row input-field col s6">
-              <button class="btn purple darken-1 waves-effect waves-light red" type="submit">Sign Up</button>
-            </div>
-
-
+            <form class = "signup-form">
+              <div class="row input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <label for="username-signup">Username</label>
+                <input class="form-input" type="text" id="username-signup" />
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">mode_edit</i>
+                <label for="email-signup">Email</label>
+                <input class="form-input" type="text" id="email-signup" />
+              </div>
+              <div class="input-field col s6">
+                <i class="material-icons prefix">mode_edit</i>
+                <label for="password-signup">Password</label>
+                <input class="form-input" type="password" id="password-signup" />
+              </div>
+              </div>
+              <div class="row input-field col s6">
+                <button class="btn purple darken-1 waves-effect waves-light red" type="submit">Sign Up</button>
+              </div>
+            </form>
         </div>
       </li>
     </ul>
