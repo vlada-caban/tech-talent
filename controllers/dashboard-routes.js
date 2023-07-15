@@ -13,15 +13,13 @@ const apiKey = process.env.API_KEY;
 router.get("/", withAuth, async (req, res) => {
   try {
     const userID = req.session.user_id;
-    const jobsData = await Jobs.findAll({
+    const jobsData = await JobsUsers.findAll({
       where: {
         user_id: userID,
       },
       include: [
         {
-          model: Users,
-          through: JobsUsers,
-          as: "user_saved_job",
+          model: Jobs
         },
       ],
     });

@@ -5,20 +5,20 @@
 {{#each jobs as |job|}}
     <div class='card'>
         <div class="card-content">
-            <span class="card-title">{{job.jobs.job_title}}</span>
+            <span class="card-title">{{job.job.job_title}}</span>
         <p>Company name: 
-        {{job.jobs.company_name}}
+        {{job.job.company_name}}
        </p>
 
 <p>Saved id: 
-        {{job.jobs.saved_job_id}}
+        {{job.job.saved_job_id}}
        </p>
       </br>
       <p>
         Status: {{job.status}}
       </p>
       <p>
-        Save on: {{format_date jobs.createdAt}}
+        Saved on: {{format_date job.createdAt}}
       </p>
       <a href="#">Click Here to Apply</a>
         </div>
