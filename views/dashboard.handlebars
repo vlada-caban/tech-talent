@@ -1,1 +1,34 @@
 {{!-- User dashboard is here --}}
+
+<h3>Welcome to your dashboard where you can see all saved jobs</h3>
+
+{{#each jobs as |job|}}
+    <div class='card'>
+        <div class="card-content">
+            <span class="card-title">{{job.job.job_title}}</span>
+        <p>Company name: 
+        {{job.job.company_name}}
+       </p>
+
+<p>Saved id: 
+        {{job.job.saved_job_id}}
+       </p>
+      </br>
+      <p>
+        Status: {{job.status}}
+      </p>
+      <p>
+        Saved on: {{format_date job.createdAt}}
+      </p>
+      {{!-- TODO: need to add a check if will navigate to 404 page and intercept --}}
+      <a href="https://findwork.dev/{{job.job.saved_job_id}}" target="blank">Click Here to Apply</a>
+        </div>
+        <div class="card-action">
+          <a href="dashboard/job/{{job.job.id}}" class="purple-text text-darken-4">Job details and notes</a>
+          <a href="#" class="purple-text text-darken-4">Update status</a>
+          <button id="delete-job-btn" data-id="{{job.job.id}}" class="btn red accent-4" type="submit">Remove job from saved</button>
+        </div>
+    </div>
+{{/each}}
+
+<script src="../js/deletejob.js"></script>
