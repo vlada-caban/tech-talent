@@ -2,7 +2,7 @@
 
 {{!-- Susan to remove and replace --}}
 
-<h1>TechTalent</h1>
+
 
 <main>
 <div id="index-banner" class="techtalent-container">
@@ -14,26 +14,55 @@
         </div>
     </div>
 <div class="tech-talent">
-    <img src="benefits-of-coding.jpg" alt="man coding on computer" style="transform: translate3d(-50%, 260.843px, 0px); opacity: 1;"/>
+    <img src="/benefits_of_coding.jpeg" width="1100" height="300">
 </div>
 </div>
-<div class="col s12">
-    <span>Hello {{firstName}}!</span>
-</div>
-    <div class="card medium">
-        <span class="search-all-jobs">Search All Jobs</span>
-         <p></p>
+<div class="row">
+    <div class="col offset-s4">
+    <div class="deep-purple lighten-5">
+          <a href="#search-all-jobs">Search All Jobs</a>
+          {{!This is where all jobs will be linked}}
+          <p></p>
      </div>
-    <div class="card medium">
-        <span class="create-account">Create Account</span>
     </div>
-        <div class="card-action">
-            <a href="#">This is a link</a>
-            <a href="#">This is a link</a>
-        </div>
-    </div>
+</div>
+<div class="row">
+    <div class="col offset-s8">
+        <div class="create-account">
+            <h4>Create Account</h4>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="first_name" type="text" class="validate">
+                            <label for="first_name">First Name</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="last_name" type="text" class="validate">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="validate">
+                            <label for="email">Email</label>
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
             </div>
+            <p></p>
         </div>
+    </div>
+</div>
 </main>
 <div class="footer-copyright">
     <div class="container">
