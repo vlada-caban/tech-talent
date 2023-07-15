@@ -1,0 +1,38 @@
+<h4>Job details and notes</h4>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title" id="job_title">{{data.role}}</span>
+    <p>Company: </p>
+    <p id="company_name">{{data.company_name}}</p>
+    <p> Posted on: {{format_date data.date_posted}}</p>
+    <p>Job details:</p>
+    <div>
+      {{{data.text}}}
+    </div>
+  </div>
+</div>
+
+<h5>You notes:</h5>
+{{#each dat.results as |job|}}
+    <div class='card'>
+        <div class="card-content">
+            <span class="card-title">
+        {{job.role}}</span>
+        <p>
+        Company: {{job.company_name}}
+        </p>
+
+      </br>
+      
+      <p>
+        Posted on: {{format_date job.date_posted}}
+      </p>
+        </div>
+        <div class="card-action">
+          <a href="job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
+        </div>
+    </div>
+  {{/each}}
+
+

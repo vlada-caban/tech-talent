@@ -19,20 +19,37 @@ Notes.belongsTo(Jobs, {
   foreignKey: "job_id",
 });
 
-Jobs.belongsToMany(User, {
-  through: {
-    model: JobsUsers,
-    unique: false
-  },
-  as: "job_belongs_to_user",
+User.hasMany(JobsUsers, {
+  foreignKey: "user_id",
 });
 
-User.belongsToMany(Jobs, {
-  through: {
-    model: JobsUsers,
-    unique: false,
-  },
-  as: "user_saved_job",
+JobsUsers.belongsTo(User, {
+  foreignKey: "user_id",
 });
+
+Jobs.hasMany(JobsUsers, {
+  foreignKey: "job_id",
+});
+
+JobsUsers.belongsTo(Jobs, {
+  foreignKey: "job_id",
+});
+
+
+// Jobs.belongsToMany(User, {
+//   through: {
+//     model: JobsUsers,
+//     unique: false
+//   },
+//   as: "job_belongs_to_user",
+// });
+
+// User.belongsToMany(Jobs, {
+//   through: {
+//     model: JobsUsers,
+//     unique: false,
+//   },
+//   as: "user_saved_job",
+// });
 
 module.exports = { User, Notes, Jobs, JobsUsers};
