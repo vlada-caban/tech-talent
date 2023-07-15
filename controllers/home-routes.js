@@ -54,7 +54,7 @@ router.get("/job/:id", withAuth, async (req, res) => {
       });
       const data = await response.json();
       
-      //console.log(data);
+      console.log(data);
 
       res.render("joblisting", { data, loggedIn: req.session.loggedIn });
     } catch (err) {

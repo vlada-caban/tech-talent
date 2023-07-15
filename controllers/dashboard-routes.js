@@ -32,6 +32,44 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+router.get("/job/:id", withAuth, async (req, res) => {
+  try {
+    const userID = req.session.user_id;
+    const jobID = req.params.id;
+    const jobsData = await Jobs.findByPk(jobID);
+    const jobDetails = jobsData.get({ plain: true });
+    console.log(jobDetails);
+
+    const officialJobID = jobDetails.saved_job_id;
+
+    console.log(officialJobID)
+
+    const notesData = await Notes.findAll({
+      where: {
+        user_id: userID,
+        job_id: jobID
+      }
+    });
+    
+    const notes = notesData.map((note) => note.get({ plain: true }));
+
+    const response = await fetch(
+      `https://findwork.dev/api/jobs/${officialJobID}`,
+      {
+        headers: {
+          Authorization: `Token ${apiKey}`,
+        },
+      }
+    );
+    const data = await response.json();
+
+    res.render("jobandnotes", { data, notes, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 //DELETE saved job
 router.delete("/job/:id", withAuth, async (req, res) => {
     try {
