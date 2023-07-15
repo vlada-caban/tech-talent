@@ -13,26 +13,47 @@
   </div>
 </div>
 
-<h5>You notes:</h5>
-{{#each dat.results as |job|}}
+<h5>Your notes:</h5>
+{{#each notes as |note|}}
     <div class='card'>
         <div class="card-content">
             <span class="card-title">
-        {{job.role}}</span>
+        {{note.note_title}}</span>
         <p>
-        Company: {{job.company_name}}
+        Note: {{note.note_body}}
         </p>
 
       </br>
       
       <p>
-        Posted on: {{format_date job.date_posted}}
+        Note made on: {{format_date note.createdAt}}
       </p>
         </div>
         <div class="card-action">
-          <a href="job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
+          <button id="delete-note-btn" data-id="{{note.id}}" class="btn red accent-4" type="submit">Remove note</button>
         </div>
     </div>
-  {{/each}}
+{{/each}}
+
+{{! form to add a note}}
+<form class="col s12">
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="note_title" class="materialize-textarea"></textarea>
+      <label for="note_title">Enter note title</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="note_body" class="materialize-textarea"></textarea>
+      <label for="note_body">Enter note body</label>
+    </div>
+  </div>
+  <button class="btn purple darken-1" id="save-note-btn" type="submit">Add new note</button>
+</form>
+
+<script src="../../js/deletenote.js"></script>
+<script src="../../js/addnote.js"></script>
+
 
 
