@@ -10,10 +10,6 @@
         {{job.job.company_name}}
        </p>
 
-<p>Saved id: 
-        {{job.job.saved_job_id}}
-       </p>
-      </br>
       <p>
         Status: {{job.status}}
       </p>
@@ -25,10 +21,35 @@
         </div>
         <div class="card-action">
           <a href="dashboard/job/{{job.job.id}}" class="purple-text text-darken-4">Job details and notes</a>
-          <a href="#" class="purple-text text-darken-4">Update status</a>
+          <a href="#update_status" class="purple-text text-darken-4 modal-trigger">Update status</a>
           <button id="delete-job-btn" data-id="{{job.job.id}}" class="btn red accent-4" type="submit">Remove job from saved</button>
         </div>
     </div>
 {{/each}}
 
+{{!-- modal to update status --}}
+<div id="update_status" class="modal">
+  <div class="modal-content">
+    <h4>Choose new status</h4>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <select id="status">
+            <option value="" disabled selected>Status</option>
+            <option value="Applied">Applied</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Need to apply">Need to apply</option>
+            <option value="Offer received">Offer received</option>
+          </select>
+          <label>Choose status</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat" data-id="{{job.job.id}}" id="update-status-btn">Save</a>
+  </div>
+</div>
+
 <script src="../js/deletejob.js"></script>
+<script src="../js/updatejobstatus.js"></script>
