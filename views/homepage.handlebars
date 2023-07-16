@@ -1,79 +1,76 @@
 {{!-- view to display all job listings on homepage --}}
 
 {{!-- Susan to remove and replace --}}
-<main>
-<div id="index-banner" class="techtalent-container">
-    <div class="section no-pad-bot">
-        <class="containter">
-            <br>
-            <br>
+<body>
+    
 
-        </div>
-    </div>
-<div class="tech-talent">
-    <img src="/public/assests/benefits_of_coding.jpeg" width="1100" height="300">
-</div>
-</div>
-<div class="row">
-    <div class="col offset-s4">
-          <div class="search-all-jobs">
-            <h4>Search All Jobs</h4>
-          </div>
-          {{alljobs}}
-          {{!This is where all jobs will be linked}}
-          <p></p>
-     </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col offset-s8">
-        <div class="create-account">
-            <h4>Create Account</h4>
-            <div class="row">
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s6">
-                            <input id="first_name" type="text" class="validate">
-                            <label for="first_name">First Name</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="last_name" type="text" class="validate">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="username" type="text" class="validate">
-                            <label for="username">Username</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="email" type="email" class="validate">
-                            <label for="email">Email</label>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate">
-                            <label for="password">Password</label>
-                        </div>
-                    </div>
-                    
-                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <p></p>
-        </div>
-    </div>
-</div>
-</main>
-<div class="footer-copyright">
+<div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        © 2023 Copyright Text
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        <br><br>
+        <h1 class="header center deep-purple-text">Welcome to TechTalent</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">A place to find your future</h5>
+        </div>
+        <div class="row center">
+            {{!Fix link to link to login page}}
+            <a href="http://materializecss.com/getting-started.html" id="download-button"
+                class="btn-large waves-effect waves-light deep-purple lighten-2">Get Started</a>
+        </div>
+        <br><br>
+
     </div>
 </div>
-</footer>
+<div class="container">
+    <div class="section">
+
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center deep-purple-text"><i class="material-icons">cloud_done</i></h2>
+                    <h5 class="center">Keep up with job status</h5>
+
+                    <p class="light">By using tags and adding notes to jobs, you are able to easily find which jobs you are still interested in on the user dashboard.</p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center deep-purple-text"><i class="material-icons">insert_comment</i></h2>
+                    <h5 class="center">Add Notes to Jobs</h5>
+
+                    <p class="light">By adding notes to the jobs you are interested in, you are able to keep track of application status (ex: moved on in application process, rejected, next round of interviews).</p>
+                </div>
+            </div>
+
+            <div class="col s12 m4">
+                <div class="icon-block">
+                    <h2 class="center deep-purple-text"><i class="material-icons">search</i></h2>
+                    <h5 class="center">Find Dev Jobs Easily</h5>
+
+                    <p class="light">By using the filters on the job search page, it makes it easier than ever to find jobs specific to your criteria.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <br><br>
+</div>
+<div class="row">
+    <div class="center">
+        <div class="card medium">
+            <div class="card-image">
+                <img src="assests/search-jobs.jpg">
+                <span class="card-title">Job Search</span>
+            </div>
+            <div class="card-content">
+                <p>Search all dev specific jobs using our customized search tool for an easier user experience.</p>
+            </div>
+            <div class="card-action">
+                {{!Link alljobs here once completed}}
+                <a href="#search-all-jobs">Search All Jobs</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
