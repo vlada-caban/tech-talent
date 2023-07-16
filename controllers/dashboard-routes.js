@@ -19,12 +19,38 @@ router.get("/", withAuth, async (req, res) => {
       },
       include: [
         {
-          model: Jobs
+          model: Jobs,
         },
       ],
     });
     const jobs = jobsData.map((job) => job.get({ plain: true }));
     console.log(jobs);
+
+    // TODO: before rendering dashboard need to check if each job is still available
+    //for each jobs.job, take saved_job_id and construct it into a link
+    //do fetch request for each link
+    //if 404 status is returned, add key-value available: false
+    //else add key-value available: true
+    //in handlebars, check if available is true, then render a link
+    //otherwise, render "Sorry, job is no longer available :( You can still see your notes for this job, but remember to update status to "No longer available!""
+
+    jobs.forEach(async (job) => {
+      let job_link = `https://findwork.dev/${job.job.saved_job_id}`;
+      console.log(job_link);
+
+      const answer = await fetch(job_link);
+
+      console.log(answer.status);
+
+      if (answer.status == 404) {
+        job.available = false;
+      } else {
+        job.available = true;
+      }
+    });
+
+    console.log(jobs);
+
     res.render("dashboard", { jobs, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
@@ -43,15 +69,15 @@ router.get("/job/:id", withAuth, async (req, res) => {
 
     const officialJobID = jobDetails.saved_job_id;
 
-    console.log(officialJobID)
+    console.log(officialJobID);
 
     const notesData = await Notes.findAll({
       where: {
         user_id: userID,
-        job_id: jobID
-      }
+        job_id: jobID,
+      },
     });
-    
+
     const notes = notesData.map((note) => note.get({ plain: true }));
 
     const response = await fetch(
@@ -90,7 +116,6 @@ router.post("/note", async (req, res) => {
       res.status(200).json(notesData);
       return;
     }
-    
   } catch (err) {
     res.status(400).json(err);
   }
@@ -98,89 +123,86 @@ router.post("/note", async (req, res) => {
 
 //UPDATE status for job
 router.put("/job-status/:id", async (req, res) => {
-    try {
-      //need to pass new status and job id
-      const status = req.body.status;
-      const job_id = req.params.id;
-      const user_id = req.session.user_id;
+  try {
+    //need to pass new status and job id
+    const status = req.body.status;
+    const job_id = req.params.id;
+    const user_id = req.session.user_id;
 
-      const statusData = await JobsUsers.update(
-        {status},
-        {
-          where: {
-            user_id: user_id,
-            job_id: job_id
-          },
-        }
-      );
-      res.status(200).json(statusData);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+    const statusData = await JobsUsers.update(
+      { status },
+      {
+        where: {
+          user_id: user_id,
+          job_id: job_id,
+        },
+      }
+    );
+    res.status(200).json(statusData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
 });
 
 //DELETE saved job
 router.delete("/job/:id", withAuth, async (req, res) => {
-    try {
-        const userID = req.session.user_id;
-        const jobID = req.params.id;
-        //removing from JobsUsers
-        const jobsUsersData = await JobsUsers.destroy({
-            where: {
-                job_id: jobID,
-                user_id: userID
-            }
-        });
+  try {
+    const userID = req.session.user_id;
+    const jobID = req.params.id;
+    //removing from JobsUsers
+    const jobsUsersData = await JobsUsers.destroy({
+      where: {
+        job_id: jobID,
+        user_id: userID,
+      },
+    });
 
-        //removing all related notes
-        const notesData = await Notes.destroy({
-            where: {
-                job_id: jobID, 
-                user_id: userID
-            }
-        });
+    //removing all related notes
+    const notesData = await Notes.destroy({
+      where: {
+        job_id: jobID,
+        user_id: userID,
+      },
+    });
 
-        //checking if only this user saved this job and if so, removing it
-        const jobsData = await JobsUsers.findAll({
-          where: {
-            job_id: jobID,
-          },
-        });
+    //checking if only this user saved this job and if so, removing it
+    const jobsData = await JobsUsers.findAll({
+      where: {
+        job_id: jobID,
+      },
+    });
 
-        console.log(jobsData);
+    console.log(jobsData);
 
-        if (jobsData === []) {
-            const jobToRemove = await Jobs.destroy({
-              where: {
-                id: jobID,
-              },
-            });
-        }
+    if (jobsData === []) {
+      const jobToRemove = await Jobs.destroy({
+        where: {
+          id: jobID,
+        },
+      });
+    }
 
-        res.status(200).json(jobsUsersData);
-        
-    } catch (err) {
+    res.status(200).json(jobsUsersData);
+  } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //DELETE saved note
 router.delete("/note/:id", withAuth, async (req, res) => {
-    try {
-        const noteID = req.params.id;
-        const notesData = await Notes.destroy({
-            where: {
-                id: noteID
-            }
-        });
+  try {
+    const noteID = req.params.id;
+    const notesData = await Notes.destroy({
+      where: {
+        id: noteID,
+      },
+    });
 
-        res.status(200).json(notesData);
-        
-    } catch (err) {
+    res.status(200).json(notesData);
+  } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
