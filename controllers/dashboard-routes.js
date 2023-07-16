@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
-const { Notes, Users, Jobs, JobsUsers } = require("../models");
+const { Notes, Jobs, JobsUsers } = require("../models");
 require("dotenv").config();
 const withAuth = require("../utils/auth");
 
@@ -32,6 +32,7 @@ router.get("/", withAuth, async (req, res) => {
   }
 });
 
+//GET job details and notes
 router.get("/job/:id", withAuth, async (req, res) => {
   try {
     const userID = req.session.user_id;
@@ -68,6 +69,55 @@ router.get("/job/:id", withAuth, async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+//ADD new note
+router.post("/note", async (req, res) => {
+  try {
+    const note_title = req.body.note_title;
+    const note_body = req.body.note_body;
+    const job_id = req.body.job_id;
+    const user_id = req.session.user_id;
+
+    //if notes data was passed, save new note
+    if (note_title || note_body) {
+      const notesData = await Notes.create({
+        note_title,
+        note_body,
+        user_id,
+        job_id,
+      });
+      res.status(200).json(notesData);
+      return;
+    }
+    
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+//UPDATE status for job
+router.put("/job-status/:id", async (req, res) => {
+    try {
+      //need to pass new status and job id
+      const status = req.body.status;
+      const job_id = req.params.id;
+      const user_id = req.session.user_id;
+
+      const statusData = await JobsUsers.update(
+        {status},
+        {
+          where: {
+            user_id: user_id,
+            job_id: job_id
+          },
+        }
+      );
+      res.status(200).json(statusData);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
 });
 
 //DELETE saved job
@@ -114,5 +164,23 @@ router.delete("/job/:id", withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//DELETE saved note
+router.delete("/note/:id", withAuth, async (req, res) => {
+    try {
+        const noteID = req.params.id;
+        const notesData = await Notes.destroy({
+            where: {
+                id: noteID
+            }
+        });
+
+        res.status(200).json(notesData);
+        
+    } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;

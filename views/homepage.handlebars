@@ -1,20 +1,20 @@
-{{!-- view to display all job listings on homepage --}}
-
-{{!-- Susan to remove and replace --}}
-<body>
-    
+{{!-- homepage view --}}
 
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <br><br>
         <h1 class="header center deep-purple-text">Welcome to TechTalent</h1>
         <div class="row center">
-            <h5 class="header col s12 light">A place to find your future</h5>
+            <h5 class="header col s12 light">A place to find your next job.</h5>
         </div>
         <div class="row center">
-            {{!Fix link to link to login page}}
-            <a href="http://materializecss.com/getting-started.html" id="download-button"
-                class="btn-large waves-effect waves-light deep-purple lighten-2">Get Started</a>
+        {{!-- if user is logged in, button to search jobs --}}
+            {{#if loggedIn}}
+            <a href="/jobs" class="btn-large waves-effect waves-light deep-purple lighten-2">Search Jobs</a>
+            {{else}}
+        {{!-- if user is not logged in, button to login --}}
+            <a href="/login" class="btn-large waves-effect waves-light deep-purple lighten-2">Login</a>
+            {{/if}}
         </div>
         <br><br>
 
@@ -67,10 +67,9 @@
                 <p>Search all dev specific jobs using our customized search tool for an easier user experience.</p>
             </div>
             <div class="card-action">
-                {{!Link alljobs here once completed}}
-                <a href="#search-all-jobs">Search All Jobs</a>
+                {{!-- link to all jobs --}}
+                <a href="/jobs" class="purple-text text-darken-4">Search All Jobs</a>
             </div>
         </div>
     </div>
 </div>
-</body>
