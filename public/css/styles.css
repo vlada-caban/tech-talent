@@ -7,3 +7,16 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+.collapsed-text {
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.expand-link {
+    display: none;
+}
+
+.expand-link.show {
+    display: block;
+}

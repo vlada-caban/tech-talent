@@ -1,22 +1,41 @@
-<h4>Job details</h4>
+{<h4>Job details</h4>
 
 <div class="card">
   <div class="card-content">
-    <span class="card-title" id="job_title">
-      <a href="{{data.job_url}}" target="_blank">{{data.role}}</a></span>
-    <p>Company: </p>
-    <p id="company_name"> <a href="{{data.job_url}}" target="_blank" id="company_name"></a>{{data.company_name}}</p>
-    <p> Posted on: {{format_date data.date_posted}}</p>
-    <p>Job details:</p>
-    <p>Remote: {{#if data.remote}}true{{else}}false{{/if}}</p>
-    <div>
-      {{{data.text}}}
-    </div>
+    <h4>Job Details</h4>
+    <p><strong>Job Title:</strong> <a href="{{data.job_url}}" target="_blank">{{data.role}}</a></p>
+    <p><strong>Company:</strong> <a href="{{data.job_url}}" target="_blank">{{data.company_name}}</a></p>
+    <p><strong>Posted on:</strong> {{format_date data.date_posted}}</p>
+    <p><strong>Remote:</strong> {{#if data.remote}}true{{else}}false{{/if}}</p>
+    <a href="{{data.job_url}}" target="_blank">Link to Job</a>
+    <p><strong>Job Details:</strong></p>
+    <ul class="collapsible job-details">
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">arrow_drop_down</i>
+          Show More
+        </div>
+        <div class="collapsible-body">
+          <p>{{{data.text}}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var collapsibleElements = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapsibleElements, {});
+  });
+</script>
+
 
     {{!-- missing link to actual job to apply--} - Done}
-    {{!-- remote true or false --}}
+    {{!-- remote true or false --} - Done}
     {{!-- ideally, data.text is too long. We want to try to collapse it --}}
   </div>
+
+
 </div>
 
 {{! form to add a note and status}}
