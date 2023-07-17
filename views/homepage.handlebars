@@ -1,74 +1,98 @@
-{{!-- view to display all job listings on homepage --}}
+{{! homepage view }}
 
-{{!-- Susan to remove and replace --}}
-<body>
 <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-        <h1 class="header center deep-purple-text">Welcome to TechTalent</h1>
-        <div class="row center">
-            <h5 class="header col s12 light">A place to find your future</h5>
-        </div>
-        <div class="row center">
-            {{!Fix link to link to login page}}
-            <a href="http://materializecss.com/getting-started.html" id="download-button"
-                class="btn-large waves-effect waves-light deep-purple lighten-2">Get Started</a>
-        </div>
-        <br><br>
-
+  <div class="container">
+    <br /><br />
+    <h1 class="header center deep-purple-text">Welcome to TechTalent</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">A place to find your next job.</h5>
     </div>
+    <div class="row center">
+      {{! if user is logged in, button to search jobs }}
+      {{#if loggedIn}}
+        <a
+          href="/jobs"
+          class="btn-large waves-effect waves-light deep-purple lighten-2"
+        >Search Jobs</a>
+      {{else}}
+        {{! if user is not logged in, button to login }}
+        <a
+          href="/jobs"
+          class="btn-large waves-effect waves-light deep-purple lighten-2"
+        >Search Jobs</a>
+        <a
+          href="/login"
+          class="btn-large waves-effect waves-light deep-purple lighten-2"
+        >Login</a>
+      {{/if}}
+    </div>
+    <br /><br />
+    
+  </div>
 </div>
+
 <div class="container">
-    <div class="section">
+  <div class="section">
 
-        <!--   Icon Section   -->
-        <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center deep-purple-text"><i class="material-icons">cloud_done</i></h2>
-                    <h5 class="center">Keep up with job status</h5>
+    <!--   Icon Section   -->
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center deep-purple-text"><i
+              class="material-icons"
+            >cloud_done</i></h2>
+          <h5 class="center">Keep up with job status</h5>
 
-                    <p class="light">By using tags and adding notes to jobs, you are able to easily find which jobs you are still interested in on the user dashboard.</p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center deep-purple-text"><i class="material-icons">insert_comment</i></h2>
-                    <h5 class="center">Add Notes to Jobs</h5>
-
-                    <p class="light">By adding notes to the jobs you are interested in, you are able to keep track of application status (ex: moved on in application process, rejected, next round of interviews).</p>
-                </div>
-            </div>
-
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center deep-purple-text"><i class="material-icons">search</i></h2>
-                    <h5 class="center">Find Dev Jobs Easily</h5>
-
-                    <p class="light">By using the filters on the job search page, it makes it easier than ever to find jobs specific to your criteria.</p>
-                </div>
-            </div>
+          <p class="light">By using tags and adding notes to jobs, you are able
+            to easily find which jobs you are still interested in on the user
+            dashboard.</p>
         </div>
+      </div>
 
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center deep-purple-text"><i
+              class="material-icons"
+            >insert_comment</i></h2>
+          <h5 class="center">Add Notes to Jobs</h5>
+
+          <p class="light">By adding notes to the jobs you are interested in,
+            you are able to keep track of application status (ex: moved on in
+            application process, rejected, next round of interviews).</p>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center deep-purple-text"><i
+              class="material-icons"
+            >search</i></h2>
+          <h5 class="center">Find Dev Jobs Easily</h5>
+
+          <p class="light">By using the filters on the job search page, it makes
+            it easier than ever to find jobs specific to your criteria.</p>
+        </div>
+      </div>
     </div>
-    <br><br>
+
+  </div>
+  <br /><br />
 </div>
 <div class="row">
-    <div class="center">
-        <div class="card medium">
-            <div class="card-image">
-                <img src="assests/search-jobs.jpg">
-                <span class="card-title">Job Search</span>
-            </div>
-            <div class="card-content">
-                <p>Search all dev specific jobs using our customized search tool for an easier user experience.</p>
-            </div>
-            <div class="card-action">
-                {{!Link alljobs here once completed}}
-                <a href="#search-all-jobs">Search All Jobs</a>
-            </div>
-        </div>
+  <div class="center">
+    <div class="card medium">
+      <div class="card-image">
+        <img src="assests/search-jobs.jpg" />
+        <span class="card-title">Job Search</span>
+      </div>
+      <div class="card-content">
+        <p>Search all dev specific jobs using our customized search tool for an
+          easier user experience.</p>
+      </div>
+      <div class="card-action">
+        {{! link to all jobs }}
+        <a href="/jobs" class="purple-text text-darken-4">Search All Jobs</a>
+      </div>
     </div>
+  </div>
 </div>
-</body>

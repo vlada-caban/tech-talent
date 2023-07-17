@@ -1,24 +1,58 @@
-<h4>All job listings</h4>
+<container>
+  <h4>All job listings</h4>
+  <nav>
+    <div class="nav-wrapper blue darken-3">
+      <a class="brand-logo">Filters</a>
+      <ul class="right hide-on-med-and-down">
+          <li>
+            <div class="input-field blue darken-2">
+              <select>
+                <option value="" disabled selected>Location</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </li>
+          <li>
+            <div class="input-field blue darken-2">
+              <select>
+                <option value="" disabled selected>Industry</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+            </div>
+          </li>
+      </ul>
+    </div>
+  </nav>
 
 {{!-- Lee to work here and add cards and pages --}}
+  <div class = "row">
+    {{#each data.results as |job|}}
+      <div class = "col s12 m6 l4"> 
+        <div class='card light-blue lighten-5'>
+            <div class="card-content">
+                <span class="card-title">
+            {{job.role}}</span>
+            <p>
+            Company: {{job.company_name}}
+            </p>
 
-{{#each data.results as |job|}}
-    <div class='card'>
-        <div class="card-content">
-            <span class="card-title">
-        {{job.role}}</span>
-        <p>
-        Company: {{job.company_name}}
-        </p>
+          </br>
+          
+          <p>
+            Posted on: {{format_date job.date_posted}}
+          </p>
+            </div>
+            <div class="card-action light-blue lighten-4">
+              <a href="job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
+            </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</container>
 
-      </br>
-      
-      <p>
-        Posted on: {{format_date job.date_posted}}
-      </p>
-        </div>
-        <div class="card-action">
-          <a href="job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
-        </div>
-    </div>
-  {{/each}}
+<script src="./js/alljobs.js"></script>
