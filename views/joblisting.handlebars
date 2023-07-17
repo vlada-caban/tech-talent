@@ -5,9 +5,9 @@
     <p><strong>Company: </strong> <a href="{{data.job_url}}" target="_blank">{{data.company_name}}</a></p> --}}
     <p><strong>Job Title: </strong><span id="job_title">{{data.role}}</span></p>
     <p><strong>Company: </strong><span id="company_name">{{data.company_name}}</span></p>
-
+    <p><strong>Location: </strong> {{data.location}}</p>
     <p><strong>Posted on: </strong> {{format_date data.date_posted}}</p>
-    <p><strong>Remote: </strong> {{#if data.remote}}True{{else}}False{{/if}}</p>
+    <p><strong>Remote: </strong> {{#if data.remote}}Yes{{else}}No{{/if}}</p>
     <br>
     
     <ul class="collapsible job-details">
