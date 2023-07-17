@@ -26,20 +26,10 @@ router.get("/", withAuth, async (req, res) => {
     const jobs = jobsData.map((job) => job.get({ plain: true }));
     //console.log(jobs);
 
-    // TODO: before rendering dashboard need to check if each job is still available
-    //for each jobs.job, take saved_job_id and construct it into a link
-    //do fetch request for each link
-    //if 404 status is returned, add key-value available: false
-    //else add key-value available: true
-    //in handlebars, check if available is true, then render a link
-    //otherwise, render "Sorry, job is no longer available :( You can still see your notes for this job, but remember to update status to "No longer available!""
-
+    // checking if link to the job is working
     for (const job of jobs) {
       let job_link = `https://findwork.dev/${job.job.saved_job_id}`;
-      //console.log(job_link);
-
       const answer = await fetch(job_link);
-
       //console.log(answer.status);
 
       if (answer.status === 404) {
@@ -58,7 +48,6 @@ router.get("/", withAuth, async (req, res) => {
       }
     }
 
-    //console.log(jobs);
     res.render("dashboard", { jobs, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
