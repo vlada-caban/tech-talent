@@ -1,43 +1,59 @@
-{{!-- User dashboard is here --}}
+{{! User dashboard is here }}
 
 <h3>Welcome to your dashboard where you can see all saved jobs</h3>
 
 {{#each jobs as |job|}}
-    <div class='card'>
-        <div class="card-content">
-            <span class="card-title">{{job.job.job_title}}</span>
-        <p>Company name: 
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">{{job.job.job_title}}</span>
+      <p>Company name:
         {{job.job.company_name}}
-       </p>
-
-      <p>
-        Status: {{job.status}}
-      </p>
-      <p>
-        Saved on: {{format_date job.createdAt}}
       </p>
 
-      {{!-- {{#if job.available}}
-      Hello
+      <p>
+        Status:
+        {{job.status}}
+      </p>
+      <p>
+        Saved on:
+        {{format_date job.createdAt}}
+      </p>
+
+      {{! checking if link would work and if job is still available}}
+      {{#if job.available}}
+        <a
+          href="https://findwork.dev/{{job.job.saved_job_id}}"
+          target="blank"
+          class="link_to_job"
+        >Click Here to Apply</a>
       {{else}}
-      No Hello
-      {{/if}} --}}
-      {{!-- TODO: need to add a check if will navigate to 404 page and intercept --}}
-      <a href="https://findwork.dev/{{job.job.saved_job_id}}" target="blank" class="link_to_job">Click Here to Apply</a>
-
-        </div>
-        <div class="card-action">
-          <a href="dashboard/job/{{job.job.id}}" class="purple-text text-darken-4">Go to job details and notes</a>
-          <button data-target="update_status" class="purple btn darken-4 modal-trigger" data-id="{{job.job.id}}">Update status</button>
-          <button id="delete-job-btn" data-id="{{job.job.id}}" class="btn red accent-4" type="submit">Remove job from saved</button>
-        </div>
+        <p>Oh no, this job is no longer available</p>
+      {{/if}}
     </div>
+    <div class="card-action">
+      <a
+        href="dashboard/job/{{job.job.id}}"
+        class="purple-text text-darken-4"
+      >Go to job details and notes</a>
+      <button
+        data-target="update_status"
+        class="purple btn darken-4 modal-trigger"
+        data-id="{{job.job.id}}"
+      >Update status</button>
+      <button
+        id="delete-job-btn"
+        data-id="{{job.job.id}}"
+        class="btn red accent-4"
+        type="submit"
+      >Remove job from saved</button>
+    </div>
+  </div>
 {{/each}}
 
-{{!-- link that is not working anymore --}}
-{{!-- <a href="https://findwork.dev/XWxKdkn/" target="blank" class="link_to_job">Click Here to Apply</a> --}}
+{{! link that is not working anymore }}
+{{! <a href="https://findwork.dev/XWxKdkn/" target="blank" class="link_to_job">Click Here to Apply</a> }}
 
-{{!-- modal to update status --}}
+{{! modal to update status }}
 <div id="update_status" class="modal">
   <div class="modal-content">
     <h4>Choose new status</h4>
@@ -50,16 +66,20 @@
             <option value="Rejected">Rejected</option>
             <option value="Need to apply">Need to apply</option>
             <option value="Offer received">Offer received</option>
-            <option value="Offer received">Job no longer available</option>
+            <option value="Job no longer available">Job no longer available</option>
           </select>
           <label>Choose status</label>
         </div>
       </div>
-      <input type="hidden" id="job_id">
+      <input type="hidden" id="job_id" />
     </form>
   </div>
   <div class="modal-footer">
-    <button class="modal-close waves-effect waves-green btn-flat" data-id="{{job.job.id}}" id="update-status-btn">Save</button>
+    <button
+      class="modal-close waves-effect waves-green btn-flat"
+      data-id="{{job.job.id}}"
+      id="update-status-btn"
+    >Save</button>
   </div>
 </div>
 
