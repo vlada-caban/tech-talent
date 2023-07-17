@@ -1,44 +1,35 @@
-{<h4>Job details</h4>
-
+<h4>Job Details:</h4>
 <div class="card">
   <div class="card-content">
-    <h4>Job Details</h4>
-    <p><strong>Job Title:</strong> <a href="{{data.job_url}}" target="_blank">{{data.role}}</a></p>
-    <p><strong>Company:</strong> <a href="{{data.job_url}}" target="_blank">{{data.company_name}}</a></p>
-    <p><strong>Posted on:</strong> {{format_date data.date_posted}}</p>
-    <p><strong>Remote:</strong> {{#if data.remote}}true{{else}}false{{/if}}</p>
-    <a href="{{data.job_url}}" target="_blank">Link to Job</a>
-    <p><strong>Job Details:</strong></p>
+    {{!-- <p><strong>Job Title: </strong> <a href="{{data.job_url}}" target="_blank">{{data.role}}</a></p>
+    <p><strong>Company: </strong> <a href="{{data.job_url}}" target="_blank">{{data.company_name}}</a></p> --}}
+    <p><strong>Job Title: </strong><span id="job_title">{{data.role}}</span></p>
+    <p><strong>Company: </strong><span id="company_name">{{data.company_name}}</span></p>
+
+    <p><strong>Posted on: </strong> {{format_date data.date_posted}}</p>
+    <p><strong>Remote: </strong> {{#if data.remote}}True{{else}}False{{/if}}</p>
+    <br>
+    
     <ul class="collapsible job-details">
       <li>
         <div class="collapsible-header">
           <i class="material-icons">arrow_drop_down</i>
-          Show More
+          Show job details
         </div>
         <div class="collapsible-body">
           <p>{{{data.text}}}</p>
         </div>
       </li>
     </ul>
+    <div class="card-action">
+      <a href="https://findwork.dev/{{data.id}}" target="blank" class="purple-text text-darken-4">Click here to apply to this job</a>
+    </div>
+
   </div>
-</div>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var collapsibleElements = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(collapsibleElements, {});
-  });
-</script>
-
-
-    {{!-- missing link to actual job to apply--} - Done}
-    {{!-- remote true or false --} - Done}
-    {{!-- ideally, data.text is too long. We want to try to collapse it --}}
-  </div>
-
-
 </div>
 
 {{! form to add a note and status}}
+<h4>Save this job to your dashboard and add status/note:</h4>
 <form class="col s12">
   <div class="row">
     <div class="input-field col s12">
@@ -68,3 +59,9 @@
 </form>
 
 <script src="../js/savejob.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var collapsibleElements = document.querySelectorAll('.collapsible');
+    M.Collapsible.init(collapsibleElements, {});
+  });
+</script>
