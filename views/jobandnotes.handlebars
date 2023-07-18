@@ -1,5 +1,7 @@
 <h4>Job details and notes</h4>
 
+<a class="purple btn darken-4" href="/dashboard">Return to dashboard</a>
+
 <div class="card">
   <div class="card-content">
 
@@ -11,6 +13,8 @@
     {{/if}}
     <p><strong>Posted on: </strong> {{format_date data.date_posted}}</p>
     <p><strong>Remote: </strong> {{#if data.remote}}Yes🏠{{else}}No🏢{{/if}}</p>
+
+    <a href="https://findwork.dev/{{data.id}}" target="blank">CLICK HERE TO APPLY</a>
 
     <ul class="collapsible job-details">
       <li>
