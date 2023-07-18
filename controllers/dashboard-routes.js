@@ -173,7 +173,7 @@ router.delete("/job/:id", withAuth, async (req, res) => {
 
     console.log(jobsData);
 
-    if (jobsData == []) {
+    if (jobsData.length===0) {
       const jobToRemove = await Jobs.destroy({
         where: {
           id: jobID,
