@@ -28,3 +28,9 @@ const addNoteFormHandler = async (e) => {
 document
   .querySelector("#save-note-btn")
   .addEventListener("click", addNoteFormHandler);
+
+document.addEventListener("DOMContentLoaded", function () {
+  let collapsibleElements = document.querySelectorAll(".collapsible");
+  M.Collapsible.init(collapsibleElements, {});
+
+});

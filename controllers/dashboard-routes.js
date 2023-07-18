@@ -34,12 +34,12 @@ router.get("/", withAuth, async (req, res) => {
 
       if (answer.status === 404) {
         job.available = false;
-        const statusData = await JobsUsers.update(
-          { status: "Job no longer available" },
+        const status = "Job no longer available";
+        const statusUpdateData = await JobsUsers.update(
+          { status },
           {
             where: {
-              user_id: userID,
-              job_id: job.id,
+              id: job.id
             },
           }
         );
@@ -47,6 +47,7 @@ router.get("/", withAuth, async (req, res) => {
         job.available = true;
       }
     }
+    console.log(jobs);
 
     res.render("dashboard", { jobs, loggedIn: req.session.loggedIn });
   } catch (err) {
@@ -172,7 +173,7 @@ router.delete("/job/:id", withAuth, async (req, res) => {
 
     console.log(jobsData);
 
-    if (jobsData === []) {
+    if (jobsData == []) {
       const jobToRemove = await Jobs.destroy({
         where: {
           id: jobID,

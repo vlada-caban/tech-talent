@@ -38,4 +38,12 @@ document
 document.addEventListener("DOMContentLoaded", function () {
   let elems = document.querySelectorAll("select");
   let instances = M.FormSelect.init(elems);
+
+  let collapsibleElements = document.querySelectorAll(".collapsible");
+  M.Collapsible.init(collapsibleElements, {});
+
+let job_modal = document.querySelectorAll(".modal");
+let jobmodalinstances = M.Modal.init(job_modal);
+
 });
+
