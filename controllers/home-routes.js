@@ -18,7 +18,6 @@ router.get("/", async (req, res) => {
     }
   });
 
-
 // GET all job posts for homepage
 router.get("/jobs", async (req, res) => {
     try {
