@@ -1,13 +1,14 @@
 <h4>Job Details:</h4>
+
+<button data-target="save_job_modal" class="btn purple darken-1 modal-trigger">Save This Job</button>
+
 <div class="card">
   <div class="card-content">
-    {{!-- <p><strong>Job Title: </strong> <a href="{{data.job_url}}" target="_blank">{{data.role}}</a></p>
-    <p><strong>Company: </strong> <a href="{{data.job_url}}" target="_blank">{{data.company_name}}</a></p> --}}
     <p><strong>Job Title: </strong><span id="job_title">{{data.role}}</span></p>
     <p><strong>Company: </strong><span id="company_name">{{data.company_name}}</span></p>
     <p><strong>Location: </strong> {{data.location}}</p>
     <p><strong>Posted on: </strong> {{format_date data.date_posted}}</p>
-    <p><strong>Remote: </strong> {{#if data.remote}}Yes{{else}}No{{/if}}</p>
+    <p><strong>Remote: </strong> {{#if data.remote}}Yes🏠{{else}}No🏢{{/if}}</p>
     <br>
     
     <ul class="collapsible job-details">
@@ -28,40 +29,41 @@
   </div>
 </div>
 
-{{! form to add a note and status}}
-<h4>Save this job to your dashboard and add status/note:</h4>
-<form class="col s12">
-  <div class="row">
-    <div class="input-field col s12">
-      <select id="status">
-        <option value="" disabled selected>Status</option>
-        <option value="Applied">Applied</option>
-        <option value="Rejected">Rejected</option>
-        <option value="Need to apply">Need to apply</option>
-        <option value="Offer received">Offer received</option>
-      </select>
-      <label>Choose status</label>
-    </div>
+{{! modal to add a note and status}}
+
+<div id="save_job_modal" class="modal">
+  <div class="modal-content">
+    <h4>Save this job to your dashboard and add status/note:</h4>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <select id="status">
+            <option value="" disabled selected>Status</option>
+            <option value="Applied">Applied</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Need to apply">Need to apply</option>
+            <option value="Offer received">Offer received</option>
+          </select>
+          <label>Choose status</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="note_title" class="materialize-textarea"></textarea>
+          <label for="note_title">Enter note title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="note_body" class="materialize-textarea"></textarea>
+          <label for="note_body">Enter note body</label>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <textarea id="note_title" class="materialize-textarea"></textarea>
-      <label for="note_title">Enter note title</label>
-    </div>
+  <div class="modal-footer">
+    <button class="btn purple darken-1" id="save-job-btn" type="submit">Save Job</button>
   </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <textarea id="note_body" class="materialize-textarea"></textarea>
-      <label for="note_body">Enter note body</label>
-    </div>
-  </div>
-  <button class="btn purple darken-1" id="save-job-btn" type="submit">Save Job</button>
-</form>
+</div>
 
 <script src="../js/savejob.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var collapsibleElements = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(collapsibleElements, {});
-  });
-</script>
