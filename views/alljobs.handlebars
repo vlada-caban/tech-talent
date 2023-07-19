@@ -1,10 +1,21 @@
 <container>
-  <h4>All job listings</h4>
+  <br>
   <nav>
-    <div class="nav-wrapper #6a1b9a purple darken-3">
-      <a class="brand-logo">Filters</a>
-      <ul class="right hide-on-med-and-down ">
+    <div class="nav-wrapper #6a1b9a grey darken-3 white-text">
+      {{!-- <a class="brand-logo">Filters</a> --}}
+      <ul class="left">
           <li>
+            <div class="input-field ">
+              <input placeholder = "Type here" class = "searchResp">
+              </select>
+            </div>
+          </li>
+          <li>
+            <a id="search-btn" class="waves-effect waves-light btn grey">Search</a>
+          </li>
+      </ul>
+      <ul class="right">
+          {{!-- <li>
             <div class="input-field ">
               <select class = "employment-type-dropdown">
                 <option value="full time" selected >Full Time</option>
@@ -12,34 +23,50 @@
                 <option value="part time">Part Time</option>
               </select>
             </div>
-          </li>
+          </li> --}}
           <li>
-            <div class="input-field ">
-              <select class = "remote-dropdown">
-                <option value="true" selected >Remote - True</option>
-                <option value="false">Remote - False</option>
-              </select>
+            <div class="switch">
+              <label>
+                Full Time
+                <input type="checkbox" class="employment-switch">
+                <span class="lever"></span>
+                Contract
+              </label>
+            </div>
+          </li>
+          <li><a> </a></li>
+          <li>
+            <div class="switch">
+              <label>
+                Office
+                <input type="checkbox" class = "remote-switch">
+                <span class="lever"></span>
+                Remote
+              </label>
             </div>
           </li>
           <li>
-            <a id="apply-btn" class="waves-effect waves-light btn purple">Apply</a>
+            <a id="apply-btn" class="waves-effect waves-light btn grey">Apply</a>
+          </li>
+          <li>
+            <a id="restore-btn" class="waves-effect waves-light btn grey">Restore All</a>
           </li>
       </ul>
     </div>
   </nav>
-
+  <h4>Job listings</h4>
 {{!-- Lee to work here and add cards and pages --}}
   <div class = "row">
     {{#each data.results as |job|}}
       <div class = "col s12 m6 l4"> 
-        <div class='card purple lighten-5'>
+        <div class='card grey lighten-5'>
             <div class="card-content">
                 <span class="card-title">{{job.role}}</span>
                 <p>Company: {{job.company_name}}</p>
                 <p>Posted on: {{format_date job.date_posted}}</p>
             </div>
-            <div class="card-action purple lighten-4">
-              <a href="/job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
+            <div class="card-action grey lighten-4">
+              <a href="/job/{{job.id}}" class="grey-text text-darken-4">Go to job page</a>
             </div>
         </div>
       </div>
