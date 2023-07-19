@@ -38,3 +38,7 @@ main {
     margin-top: auto;
     /* Footer height */
 }
+
+.flow-text {
+    font-size: 20px;
+}
