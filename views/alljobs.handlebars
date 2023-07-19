@@ -1,7 +1,7 @@
 <container>
   <h4>All job listings</h4>
   <nav>
-    <div class="nav-wrapper #6a1b9a purple darken-3">
+    <div class="nav-wrapper #6a1b9a grey darken-3 white-text">
       <a class="brand-logo">Filters</a>
       <ul class="right hide-on-med-and-down ">
           <li>
@@ -22,7 +22,24 @@
             </div>
           </li>
           <li>
-            <a id="apply-btn" class="waves-effect waves-light btn purple">Apply</a>
+            <a id="apply-btn" class="waves-effect waves-light btn grey">Apply Filters</a>
+          </li>
+          <li>
+            <a id="restore-btn" class="waves-effect waves-light btn grey">Restore All Jobs</a>
+          </li>
+      </ul>
+    </div>
+    <div class="nav-wrapper #6a1b9a grey darken-3 white-text">
+      <a class="brand-logo">Search</a>
+      <ul class="right hide-on-med-and-down ">
+          <li>
+            <div class="input-field ">
+              <input placeholder = "Type here" class = "searchResp">
+              </select>
+            </div>
+          </li>
+          <li>
+            <a id="search-btn" class="waves-effect waves-light btn grey">Search</a>
           </li>
       </ul>
     </div>
@@ -32,14 +49,14 @@
   <div class = "row">
     {{#each data.results as |job|}}
       <div class = "col s12 m6 l4"> 
-        <div class='card purple lighten-5'>
+        <div class='card grey lighten-5'>
             <div class="card-content">
                 <span class="card-title">{{job.role}}</span>
                 <p>Company: {{job.company_name}}</p>
                 <p>Posted on: {{format_date job.date_posted}}</p>
             </div>
-            <div class="card-action purple lighten-4">
-              <a href="/job/{{job.id}}" class="purple-text text-darken-4">Go to job page</a>
+            <div class="card-action grey lighten-4">
+              <a href="/job/{{job.id}}" class="grey-text text-darken-4">Go to job page</a>
             </div>
         </div>
       </div>
