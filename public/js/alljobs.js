@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var instances = M.FormSelect.init(elems);
 });
 
-var employmentTypeDropdown = document.querySelector(".employment-type-dropdown");
-var remoteDropdown = document.querySelector(".remote-dropdown");
+var employmentTypeSwitch = document.querySelector(".employment-swtich");
+var remoteSwitch = document.querySelector(".remote-switch");
 var searchInput = document.querySelector(".searchResp");
 var applyBtn = document.getElementById("apply-btn");
 var restoreBtn = document.getElementById("restore-btn");
@@ -15,8 +15,9 @@ var searchBtn = document.getElementById("search-btn");
 var roles = document.querySelector(".jobCard");
 
 applyBtn.addEventListener("click", async function () {
-  var employmentType = employmentTypeDropdown.value;
-  var remoteStatus = remoteDropdown.value;
+  var employmentType = employmentTypeSwitch? 'full time' : 'contract';
+  var remoteStatus = remoteSwitch.checked ? 1 : 0;;
+  console.log(remoteStatus)
 
   try {
     const response = await fetch(`/jobs/filter/${employmentType}/${remoteStatus}`,

@@ -54,7 +54,7 @@ router.get("/job/:id", withAuth, async (req, res) => {
       });
       const data = await response.json();
       
-      console.log(data);
+      // console.log(data);
 
       res.render("joblisting", { data, loggedIn: req.session.loggedIn });
     } catch (err) {
@@ -68,7 +68,7 @@ router.get("/job/:id", withAuth, async (req, res) => {
 router.get("/jobs/filter/:employType/:remoteStatus", withAuth, async (req, res) => {
   try {
     const employmentType_id = req.params.employType;
-    const remoteStatus = req.query.remoteStatus;
+    const remoteStatus = req.params.remoteStatus;
     console.log(employmentType_id);
     console.log(remoteStatus);  
   
@@ -83,7 +83,7 @@ router.get("/jobs/filter/:employType/:remoteStatus", withAuth, async (req, res) 
       );
       const data = await response.json();
       
-      console.log(data);
+      // console.log(data);
 
       res.render("alljobs", { data, loggedIn: req.session.loggedIn });
     } catch (err) {
@@ -109,7 +109,7 @@ router.get("/jobs/search/:searchQuery", withAuth, async (req, res) => {
       );
       const data = await response.json();
       
-      console.log(data);
+      // console.log(data);
 
       res.render("alljobs", { data, loggedIn: req.session.loggedIn });
     } catch (err) {
