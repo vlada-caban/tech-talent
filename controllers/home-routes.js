@@ -62,6 +62,35 @@ router.get("/job/:id", withAuth, async (req, res) => {
     }
 });
 
+
+// GET all jobs with for homepage with filters
+router.get("/jobs/filter/:employType/:remoteStatus", withAuth, async (req, res) => {
+  try {
+    const employmentType_id = req.params.employType;
+    const remoteStatus = req.query.remoteStatus;
+    console.log(employmentType_id);
+    console.log(remoteStatus);  
+  
+      const response = await fetch(
+        `https://findwork.dev/api/jobs/?employment_type=${employmentType_id}&remote=${remoteStatus}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Token ${apiKey}`,
+          },
+        }
+      );
+      const data = await response.json();
+      
+      console.log(data);
+
+      res.render("alljobs", { data, loggedIn: req.session.loggedIn });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+});
+
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
