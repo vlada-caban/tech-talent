@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const sequelize = require("sequelize");
-const { Notes, User } = require("../models");
+const { Notes, User, JobsUsers, Jobs } = require("../models");
 require("dotenv").config();
 const withAuth = require("../utils/auth");
 
@@ -45,7 +45,9 @@ router.get("/jobs", async (req, res) => {
 router.get("/job/:id", withAuth, async (req, res) => {
     try {
       const job_id = req.params.id;
-  
+      const user_id = req.session.user_id;
+      let notSaved = true;
+
       const response = await fetch(`https://findwork.dev/api/jobs/${job_id}`, {
         headers: {
           Authorization: `Token ${apiKey}`,
@@ -53,9 +55,62 @@ router.get("/job/:id", withAuth, async (req, res) => {
       });
       const data = await response.json();
       
+const jobsData = await Jobs.findOne({
+  where: {
+    saved_job_id: job_id,
+  },
+});
+
+
+
+console.log(jobsData);
+
+if (jobsData !== null) {
+  const jobsSavedData = await JobsUsers.findOne({
+    where: {
+      job_id: jobsData.id,
+      user_id: user_id
+    },
+  });
+
+  if (jobsSavedData !== null) {
+    notSaved = false;
+  }
+}
+
+
       console.log(data);
 
-      res.render("joblisting", { data, loggedIn: req.session.loggedIn });
+      res.render("joblisting", { data, loggedIn: req.session.loggedIn, notSaved });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+});
+
+
+// GET all jobs with for homepage with filters
+router.get("/jobs/filter/:employType/:remoteStatus", withAuth, async (req, res) => {
+  try {
+    const employmentType_id = req.params.employType;
+    const remoteStatus = req.query.remoteStatus;
+    console.log(employmentType_id);
+    console.log(remoteStatus);  
+  
+      const response = await fetch(
+        `https://findwork.dev/api/jobs/?employment_type=${employmentType_id}&remote=${remoteStatus}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Token ${apiKey}`,
+          },
+        }
+      );
+      const data = await response.json();
+      
+      console.log(data);
+
+      res.render("alljobs", { data, loggedIn: req.session.loggedIn });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
