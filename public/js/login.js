@@ -50,6 +50,7 @@ document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
 
+
 document.addEventListener('DOMContentLoaded', function() {
   var container = document.querySelector('.collapsible');
   var instance = M.Collapsible.init(container);
