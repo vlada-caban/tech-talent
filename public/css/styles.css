@@ -42,3 +42,17 @@ main {
 .flow-text {
     font-size: 20px;
 }
+
+/* .switchclass {
+    padding-right: 1%;
+} */
+
+/* .right{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+} */
+
+.jobscards {
+    height: 10em;
+}
