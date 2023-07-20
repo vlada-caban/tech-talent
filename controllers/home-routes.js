@@ -17,6 +17,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/newpassword", async (req, res) => {
+  try {
+    res.render("newpassword", { loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // GET all job posts for homepage
 router.get("/jobs", async (req, res) => {
   try {
