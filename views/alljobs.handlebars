@@ -6,7 +6,7 @@
       <ul class="left">
           <li>
             <div class="input-field ">
-              <input placeholder = "Type here" class = "searchResp">
+              <input placeholder = "Type here" class = "searchResp white-text">
               </select>
             </div>
           </li>
@@ -24,7 +24,7 @@
               </select>
             </div>
           </li> --}}
-          <li>
+          <li class="switchclass">
             <div class="switch">
               <label>
                 Full Time
@@ -34,7 +34,8 @@
               </label>
             </div>
           </li>
-          <li><a> </a></li>
+          <li><a>  |  </a></li>
+          
           <li>
             <div class="switch">
               <label>
@@ -58,9 +59,10 @@
 {{!-- Lee to work here and add cards and pages --}}
   <div class = "row">
     {{#each data.results as |job|}}
+      {{!-- <div class = "col s12 m6 l4">  --}}
       <div class = "col s12 m6 l4"> 
-        <div class='card grey lighten-5'>
-            <div class="card-content">
+        <div class='card grey lighten-5 '>
+            <div class="card-content jobscards">
                 <span class="card-title">{{job.role}}</span>
                 <p>Company: {{job.company_name}}</p>
                 <p>Posted on: {{format_date job.date_posted}}</p>
