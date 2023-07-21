@@ -30,8 +30,7 @@ router.get("/", withAuth, async (req, res) => {
     for (const job of jobs) {
       let job_link = `https://findwork.dev/${job.job.saved_job_id}`;
       const answer = await fetch(job_link);
-      //console.log(answer.status);
-
+  
       if (answer.status === 404) {
         job.available = false;
         const status = "Job no longer available";
@@ -47,8 +46,7 @@ router.get("/", withAuth, async (req, res) => {
         job.available = true;
       }
     }
-    console.log(jobs);
-
+    
     res.render("dashboard", { jobs, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
