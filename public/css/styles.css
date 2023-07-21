@@ -60,3 +60,49 @@ main {
 .jobscards {
     height: 10em;
 }
+
+.iris {
+    position: relative;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.iris::before {
+    content: "";
+    background-image: url("../assests/search-jobs.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+[type="checkbox"].filled-in.tabbed:checked:focus+span:not(.lever):after {
+    border-radius: 2px;
+    background-color: #692ca6;
+    border-color: #692ca6;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #692ca6;
+    background-color: #692ca6;
+    z-index: 0;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #692ca6;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #ede7f6;
+}
