@@ -8,6 +8,10 @@ main {
     flex: 1 0 auto;
 }
 
+.title-text {
+    font-family: 'Inconsolata', monospace;
+}
+
 .collapsed-text {
     max-height: 100px;
     overflow: hidden;

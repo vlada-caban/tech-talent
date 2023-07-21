@@ -45,8 +45,8 @@
       
       <p>Note made on: {{format_date note.createdAt}}</p>
     </div>
-    <div class="card-action">
-      <button id="delete-note-btn" data-id="{{note.id}}" class="btn red accent-4" type="submit">Remove note</button>
+    <div class="card-action deep-purple lighten-4">
+      <button id="delete-note-btn" data-id="{{note.id}}" class="btn red lighten-1" type="submit">Remove note</button>
     </div>
   </div>
 {{/each}}
@@ -65,7 +65,7 @@
       <label for="note_body">Enter note body</label>
     </div>
   </div>
-  <button class="btn purple darken-1" id="save-note-btn" type="submit">Add new note</button>
+  <button class="btn deep-purple darken-1" id="save-note-btn" type="submit">Add new note</button>
 </form>
 
 <script src="../../js/deletenote.js"></script>

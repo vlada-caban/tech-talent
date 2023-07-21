@@ -11,23 +11,23 @@
       rel="stylesheet"
     />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;900&display=swap" rel="stylesheet">
+
   </head>
 
   <body>
     {{! Navigation bar }}
     <nav class="deep-purple darken-3" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="/" class="brand-logo">TechTalent</a>
+        <a id="logo-container" href="/" class="brand-logo title-text">TechTalent</a>
         {{! navigation bar for non-mobile devices }}
         <ul class="right hide-on-med-and-down">
           {{#if loggedIn}}
             <li><a href="/">Home</a></li>
             <li><a href="/jobs">All Jobs</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
-
             <li><a href="/resources">Resources</a></li>
-
-            <li><a href='/newpassword'>Udpate Password</a></li>
+            <li><a href='/newpassword'>Update Password</a></li>
             <li><a id="logout">Logout</a></li>
           {{else}}
             <li><a href="/">Home</a></li>
@@ -40,11 +40,8 @@
             <li><a href="/">Home</a></li>
             <li><a href="/jobs">All Jobs</a></li>
             <li><a href="/dashboard">Dashboard</a></li>
-
             <li><a href="/resources">Resources</a></li>
-
-            <li><a href='/newpassword'>Udpate Password</a></li>
-
+            <li><a href='/newpassword'>Update Password</a></li>
             <li><a id="logout">Logout</a></li>
           {{else}}
             <li><a href="/">Home</a></li>
@@ -74,8 +71,6 @@
     </div>
   </footer>
   </body>
-
-  
 
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/js/materialize.min.js"></script>
