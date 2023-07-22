@@ -43,6 +43,11 @@ main {
     /* Footer height */
 }
 
+.footer-text {
+    margin: auto;
+    text-align: center;
+}
+
 .flow-text {
     font-size: 20px;
 }

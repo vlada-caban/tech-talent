@@ -28,6 +28,10 @@
       </li>
     </ul>
   </div>
+  <div class="card-action">
+    <p><strong>Status: </strong> {{status.status}} </p>
+    <button data-target="status-modal" class="deep-purple btn darken-4 modal-trigger">Update status</button>
+  </div>
 </div>
 
 {{#if notes}}
@@ -68,8 +72,36 @@
   <button class="btn deep-purple darken-1" id="save-note-btn" type="submit">Add new note</button>
 </form>
 
+{{! modal to update status }}
+<div id="status-modal" class="modal">
+  <div class="modal-content">
+    <h4>Choose new status</h4>
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <select id="status">
+            <option value="" disabled selected>Status</option>
+            <option value="Applied">Applied</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Need to apply">Need to apply</option>
+            <option value="Offer received">Offer received</option>
+            <option value="Job no longer available">Job no longer available</option>
+          </select>
+          <label>Choose status</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="modal-close waves-effect waves-green btn-flat"
+      id="update-status-btn"
+    >Save</button>
+  </div>
+</div>
+
 <script src="../../js/deletenote.js"></script>
 <script src="../../js/addnote.js"></script>
-
+<script src="../../js/status.js"></script>
 
 
