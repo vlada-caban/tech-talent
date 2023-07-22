@@ -74,6 +74,15 @@ router.get("/job/:id", withAuth, async (req, res) => {
       },
     });
 
+const statusData = await JobsUsers.findOne({
+  where: {
+    user_id: userID,
+    job_id: jobID,
+  },
+});
+
+const status = statusData.get({ plain: true });
+
     const notes = notesData.map((note) => note.get({ plain: true }));
 
     const response = await fetch(
@@ -86,7 +95,7 @@ router.get("/job/:id", withAuth, async (req, res) => {
     );
     const data = await response.json();
 
-    res.render("jobandnotes", { data, notes, loggedIn: req.session.loggedIn });
+    res.render("jobandnotes", { data, notes, status, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
